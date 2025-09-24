@@ -81,7 +81,7 @@ function analyzeSalesData(data, options) {
             if (!sellerStats.products_sold[purchaseItem.sku]) {
                 sellerStats.products_sold[purchaseItem.sku] = 0;
             }
-            sellerStats.products_sold[purchaseItem.sku]++;
+            sellerStats.products_sold[purchaseItem.sku] += purchaseItem.quantity;
         }
         
         sellerStats.revenue += purchaseRecord.total_amount;
