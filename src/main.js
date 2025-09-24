@@ -95,7 +95,7 @@ function analyzeSalesData(data, options) {
     sellersSorted.forEach((seller, index) => {
         seller.bonus = calculateBonus(index, sellersSorted.length, seller);
         seller.top_products = Object.entries(seller.products_sold).map(item => ({sku: item[0], quantity: item[1]})).sort(
-            (a, b) => a.quantity - b.quantity).reverse().slice(0, 10);
+            (a, b) => b.quantity - a.quantity).slice(0, 10);
     })
 
     // Подготовка итоговой коллекции с нужными полями
