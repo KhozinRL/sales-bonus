@@ -76,15 +76,15 @@ function analyzeSalesData(data, options) {
         for (let purchaseItem of purchaseRecord.items) {
             const product = productsBySku[purchaseItem.sku];
             const productRevenue = calculateRevenue(purchaseItem, product);
-            sellerStats.revenue += productRevenue;
             sellerStats.profit += productRevenue - product.purchase_price * purchaseItem.quantity;
 
             if (!sellerStats.products_sold[purchaseItem.sku]) {
                 sellerStats.products_sold[purchaseItem.sku] = 0;
             }
-            sellerStats.products_sold[purchaseItem.sku] += 1;
+            sellerStats.products_sold[purchaseItem.sku]++;
         }
-
+        
+        sellerStats.revenue += purchaseRecord.total_amount;
         sellerStats.sales_count++;
     }
 
