@@ -89,7 +89,7 @@ function analyzeSalesData(data, options) {
     }
 
     // Сортировка продавцов по прибыли
-    const sellersSorted = sellerStats.toSorted((a, b) => a.profit - b.profit).reverse();
+    const sellersSorted = [...sellerStats].sort((a, b) => a.profit - b.profit).reverse();
 
     // Назначение премий на основе ранжирования
     sellersSorted.forEach((seller, index) => {
